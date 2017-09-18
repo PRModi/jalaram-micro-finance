@@ -24,7 +24,7 @@ export class NewCustomerPage {
   }
 
   onSubmit(form: NgForm) {
-    console.log();
+    console.log(form);
   }
 
 }
