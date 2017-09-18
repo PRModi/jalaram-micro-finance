@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+            <ion-icon name='menu'></ion-icon>
+          </button>
+    </ion-buttons>
+    <ion-title>Add new customer</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Customer Name</ion-label>
+        <ion-input type="text" name="customerName" ngModel required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Reference</ion-label>
+        <ion-input type="text" name="reference" ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select required>
+          <ion-option value="Daily">Daily</ion-option>
+          <ion-option value="Weekly">Weekly</ion-option>
+          <ion-option value="Monthly">Monthly</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select required>
+          <ion-option value="5000">5000</ion-option>
+          <ion-option value="10000">10000</ion-option>
+          <ion-option value="15000">15000</ion-option>
+          <ion-option value="20000">20000</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label floating>Mobile</ion-label>
+        <ion-input type="number" name="mobile" ngModel></ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" required></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Type of ID proof</ion-label>
+        <ion-select required>
+          <ion-option value="Election Card">Election Card</ion-option>
+          <ion-option value="Aadhar Card">Aadhar Card</ion-option>
+          <ion-option value="PAN Card">PAN Card</ion-option>
+          <ion-option value="Rent Agreement">Rent Agreement</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button color="secondary" type="submit" medium [disabled]="!f.valid">Submit Details</button>
+      </ion-item>
+
+
+
+    </ion-list>
+
+  </form>
+
+</ion-content>
