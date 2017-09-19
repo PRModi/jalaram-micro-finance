@@ -1,3 +1,4 @@
+import { CustomerService } from './../services/customer.service';
 import { NewCustomerPage } from './../pages/new-customer/new-customer';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -27,7 +28,8 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    CustomerService
   ]
 })
 export class AppModule { }

@@ -1,17 +1,34 @@
 <ion-menu [content]="mycontent">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
 
-    <ion-list>
-      <button ion-item (click)="openPage(custPage)"><p>Add Customer</p></button>
-      <button ion-item><p>Update Daily Entry</p></button>
-      <button ion-item><p>Customer Details</p></button>
+    <ion-list no-lines>
+      <button ion-item (click)="openPage(custPage)">
+        <ion-icon color="secondary" item-left name="person-add"></ion-icon>
+        <b>Add Customer</b></button>
+
+      <button ion-item (click)="openPage(custPage)">
+        <ion-icon color="secondary" item-left name="clipboard"></ion-icon>
+            <b>Update Daily Entry</b></button>
+
+      <button ion-item (click)="openPage(custPage)">
+         <ion-icon color="secondary" item-left name="ios-people"></ion-icon>
+           <b>Customer Details</b></button>
+
+
     </ion-list>
   </ion-content>
+
+  <ion-footer>
+    <ion-toolbar color="secondary">
+
+    </ion-toolbar>
+
+  </ion-footer>
 </ion-menu>
 
 
