@@ -27,7 +27,7 @@ export class NewCustomerPage {
   onSubmit(form: NgForm) {
     console.log(form);
 
-    const customer: Customer = new Customer(form.value.customerName, form.value.contactNumber, form.value.reference, form.value.collectionType, form.value.loanAmount, form.value.date, form.value.idProof);
+    const customer: Customer = new Customer(form.value.customerName, form.value.contactNumber, form.value.reference, form.value.collectionType, form.value.loanAmount, form.value.date, form.value.idProof, form.value.loanAmount);
     this.custService.addCustomer(customer);
 
   }

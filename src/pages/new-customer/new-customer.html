@@ -5,7 +5,7 @@
             <ion-icon name='menu'></ion-icon>
           </button>
     </ion-buttons>
-    <ion-title>Add new customer</ion-title>
+    <ion-title>Add New Customer</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -21,7 +21,7 @@
 
       <ion-item>
         <ion-label floating>Contact Number</ion-label>
-        <ion-input type="number" name="contactNumber" size="10" ngModel required></ion-input>
+        <ion-input type="tel" name="contactNumber" size="10" ngModel required></ion-input>
       </ion-item>
 
       <ion-item>
@@ -63,7 +63,7 @@
         </ion-select>
       </ion-item>
     </ion-list>
-    <button ion-button color="secondary" block large type="submit" medium [disabled]="!f.valid">Submit Details</button>
+    <button ion-button color="secondary" block medium round type="submit" medium [disabled]="!f.valid">Submit Details</button>
   </form>
 
 </ion-content>

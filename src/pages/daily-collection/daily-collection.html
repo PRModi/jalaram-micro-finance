@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+                <ion-icon name='menu'></ion-icon>
+              </button>
+    </ion-buttons>
+    <ion-title>Daily Collection Form</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <ion-list no-lines>
+    <ion-searchbar (ionInput)="filterCustomer($event)" placeholder="Search customer name" autocorrect="on"></ion-searchbar>
+
+    <button type="button" ion-item *ngFor="let customer of customers" (click)="selectCustomer(customer)"><p>{{ customer.name }}</p></button>
+
+  </ion-list>
+
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list no-lines *ngIf="selectedCustomer !=''">
+
+      <ion-item>
+        <ion-label floating>Customer Name</ion-label>
+        <ion-input type="text" [ngModel]="selectedCustomer" name="customerName" readonly required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Amount given</ion-label>
+        <ion-input type="number" ngModel name="amountGiven" required></ion-input>
+      </ion-item>
+      <ion-item></ion-item>
+
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="DD MMMM YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="date" name="date" required></ion-datetime>
+      </ion-item>
+      <ion-item></ion-item>
+      <button ion-button block round medium color="secondary" type="submit" [disabled]="!f.valid">Submit</button>
+    </ion-list>
+    
+  </form>
+</ion-content>

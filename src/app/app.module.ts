@@ -1,3 +1,4 @@
+import { DailyCollectionPage } from './../pages/daily-collection/daily-collection';
 import { CustomerService } from './../services/customer.service';
 import { NewCustomerPage } from './../pages/new-customer/new-customer';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +14,8 @@ import { HomePage } from '../pages/home/home';
   declarations: [
     MyApp,
     HomePage,
-    NewCustomerPage
+    NewCustomerPage,
+    DailyCollectionPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { HomePage } from '../pages/home/home';
   entryComponents: [
     MyApp,
     HomePage,
-    NewCustomerPage
+    NewCustomerPage,
+    DailyCollectionPage
   ],
   providers: [
     StatusBar,

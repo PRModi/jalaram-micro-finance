@@ -1,12 +1,12 @@
 export class Customer {
     constructor(
-        public customerName: string,
+        public name: string,
         public contactNumber: string,
         public reference: string,
         public collectionType: string,
         public loanAmount: string,
-        public date: Date,
-        public idProod: string
-
+        public date: string,
+        public idProof: string,
+        public amountDue : string
     ) { }
 }
