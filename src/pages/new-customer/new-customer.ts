@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Customer } from './../../models/customer.model';
 import { CustomerService } from './../../services/customer.service';
 import { Component } from '@angular/core';
@@ -17,7 +18,11 @@ export class NewCustomerPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public custService: CustomerService) {
+    public custService: CustomerService,
+    private authService: AuthService) {
+
+      const date = new Date();
+      console.log(date);
   }
 
   ionViewDidLoad() {
@@ -26,9 +31,18 @@ export class NewCustomerPage {
 
   onSubmit(form: NgForm) {
     console.log(form);
+    console.log(form.value.date);
+    const date: Date = new Date();
+    console.log(date);
+    const customer: Customer = new Customer(form.value.name, form.value.contactNumber, form.value.reference, form.value.collectionType, form.value.loanAmount, date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear(), form.value.idProof, form.value.loanAmount);
 
-    const customer: Customer = new Customer(form.value.customerName, form.value.contactNumber, form.value.reference, form.value.collectionType, form.value.loanAmount, form.value.date, form.value.idProof, form.value.loanAmount);
-    this.custService.addCustomer(customer);
+    this.authService.getActiveUser().getToken()
+      .then((token: string) => {
+        this.custService.addCustomer(customer, token)
+          .subscribe(
+          (data) => { console.log(data) },
+          (error) => { console.log(error) })
+      });
 
   }
 

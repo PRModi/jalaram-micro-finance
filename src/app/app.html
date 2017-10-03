@@ -7,6 +7,11 @@
   <ion-content>
 
     <ion-list no-lines>
+
+      <button ion-item (click)="openPage(homePage)">
+        <ion-icon color="secondary" item-left name="home"></ion-icon>
+           <b>Home</b></button>
+
       <button ion-item (click)="openPage(custPage)">
         <ion-icon color="secondary" item-left name="person-add"></ion-icon>
         <b>Add Customer</b></button>
@@ -15,9 +20,10 @@
         <ion-icon color="secondary" item-left name="clipboard"></ion-icon>
             <b>Update Daily Entry</b></button>
 
-      <button ion-item (click)="openPage(custPage)">
+      <button ion-item (click)="openPage(custDetailsPage)">
          <ion-icon color="secondary" item-left name="people"></ion-icon>
            <b>Customer Details</b></button>
+
 
 
     </ion-list>
@@ -25,6 +31,9 @@
 
   <ion-footer>
     <ion-toolbar color="secondary">
+      <p style="color:grey">
+        Version : 1.0.0
+      </p>
 
     </ion-toolbar>
 

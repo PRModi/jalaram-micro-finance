@@ -1,0 +1,105 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Customer Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="filterCustomer($event)" placeholder="Search customer name" autocorrect="on"></ion-searchbar>
+
+  <div text-center class="centeredDiv" *ngIf="!selectedCustomer">
+    <ion-icon style="font-size:80px ; color:#6ed3cf" name="search"></ion-icon>
+    <p style="font-size:12px ; color:grey">Enter the Customer name in the search bar to populate the list</p>
+  </div>
+
+  <div>
+    <ion-list>
+      <button type="button" ion-item *ngFor="let customer of customers" (click)="selectCustomer(customer)">
+        <p>{{ customer.name }}</p></button>
+    </ion-list>
+  </div>
+
+  <ion-grid *ngIf="selectedCustomer">
+    <ion-row>
+      <ion-col>
+        <p>Customer Name :</p>
+      </ion-col>
+      <ion-col>
+        <p>{{ selectedCustomer.name }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p>Contact Number :</p>
+      </ion-col>
+      <ion-col>
+        <p>{{ selectedCustomer.contactNumber }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p>Reference :</p>
+      </ion-col>
+      <ion-col>
+        <p>{{ selectedCustomer.reference }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p>Collection Type :</p>
+      </ion-col>
+      <ion-col>
+        <p>{{ selectedCustomer.collectionType }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p>Loan Amount :</p>
+      </ion-col>
+      <ion-col>
+        <p>{{selectedCustomer.loanAmount}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p>Start Date :</p>
+      </ion-col>
+      <ion-col>
+        <p>{{selectedCustomer.date}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p>Due Amount :</p>
+      </ion-col>
+      <ion-col>
+        <p>{{selectedCustomer.loanAmount}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p>Id proof :</p>
+      </ion-col>
+      <ion-col>
+        <p>{{selectedCustomer.idProof}}</p>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>

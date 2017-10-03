@@ -1,27 +1,21 @@
-import { NgForm } from '@angular/forms';
 import { CustomerService } from './../../services/customer.service';
+import { Customer } from './../../models/customer.model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Customer } from '../../models/customer.model';
 
 @IonicPage()
 @Component({
-  selector: 'page-daily-collection',
-  templateUrl: 'daily-collection.html',
+  selector: 'page-customer-details',
+  templateUrl: 'customer-details.html',
 })
-export class DailyCollectionPage {
+export class CustomerDetailsPage {
   customers: Customer[] = [];
-  date: string = new Date().toISOString();
-  selectedCustomer: string = "";
+  isSearchTap: boolean = false;
+  selectedCustomer: Customer;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    private customerService: CustomerService) {
-  }
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DailyCollectionPage');
+    public customerService: CustomerService) {
   }
 
   initializeItems() {
@@ -33,27 +27,21 @@ export class DailyCollectionPage {
     console.log(event.target.value);
     const value = event.target.value;
 
+
     if (value && value.trim() != '') {
       this.customers = this.customers.filter((customer) => {
         return (customer.name.toLowerCase().indexOf(value.toLowerCase()) > -1)
       });
     }
-
     else {
       this.customers = [];
     }
-    this.selectedCustomer = '';
   }
 
   selectCustomer(customer: Customer) {
     console.log(customer.name);
-    this.selectedCustomer = customer.name;
+    this.selectedCustomer = customer;
     this.customers = [];
-  }
-
-  onSubmit(form: NgForm) {
-    const date = new Date(form.value.date);
-    console.log(date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear());
   }
 
 }

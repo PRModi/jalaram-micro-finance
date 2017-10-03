@@ -1,26 +1,42 @@
+import { HomePage } from './../pages/home/home';
+import { LoginPage } from './../pages/login/login';
+import { CustomerDetailsPage } from './../pages/customer-details/customer-details';
 import { DailyCollectionPage } from './../pages/daily-collection/daily-collection';
 import { NewCustomerPage } from './../pages/new-customer/new-customer';
 import { Component } from '@angular/core';
-import { Platform, MenuController } from 'ionic-angular';
+import { Platform, MenuController, AlertController, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import firebase from 'firebase'
+import firebase from 'firebase';
 
-import { HomePage } from '../pages/home/home';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = HomePage;
+  homePage: any = HomePage;
+  rootPage: any = LoginPage;
   custPage: any = NewCustomerPage;
   dailyCollectionPage: any = DailyCollectionPage;
+  custDetailsPage: any = CustomerDetailsPage;
 
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController) {
+
+  constructor(platform: Platform,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
+    public menuCtrl: MenuController,
+    public alertCtrl: AlertController
+  ) {
 
     firebase.initializeApp({
-
+      apiKey: "AIzaSyD_ikp2w6mg4OdpM-H6Al7CItQ7Zk1pX9g",
+      authDomain: "jalaram-finance.firebaseapp.com",
+      databaseURL: "https://jalaram-finance.firebaseio.com",
+      projectId: "jalaram-finance",
+      storageBucket: "jalaram-finance.appspot.com",
+      messagingSenderId: "537886879116"
     });
+
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -36,5 +52,6 @@ export class MyApp {
     this.menuCtrl.close();
 
   }
+
 }
 

@@ -1,10 +1,19 @@
 <ion-header>
   <ion-navbar color="primary">
+
     <ion-buttons left>
       <button ion-button icon-only menuToggle>
         <ion-icon name='menu'></ion-icon>
       </button>
     </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="logOut()">
+          <ion-icon name='power'></ion-icon>
+        </button>
+    </ion-buttons>
+
+
+
     <ion-title>
       Jalaram Micro Finance
     </ion-title>
