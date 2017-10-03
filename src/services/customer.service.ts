@@ -29,7 +29,7 @@ export class CustomerService {
     addCustomer(customer: Customer, token: string) {
         this.customers.push(customer);
         const userId = this.authService.getActiveUser().uid;
-        return this.http.put('https://jalaram-micro-finance.firebaseio.com/' + userId + 'customer-list.json?auth=' + token, this.customers)
+        return this.http.put('https://jalaram-finance.firebaseio.com/' + userId + 'customer-list.json?auth=' + token, this.customers)
             .map((response: Response) => {
                 return response.json();
             });

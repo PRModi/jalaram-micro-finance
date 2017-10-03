@@ -21,8 +21,8 @@ export class NewCustomerPage {
     public custService: CustomerService,
     private authService: AuthService) {
 
-      const date = new Date();
-      console.log(date);
+    const date = new Date();
+    console.log(date);
   }
 
   ionViewDidLoad() {
@@ -34,7 +34,7 @@ export class NewCustomerPage {
     console.log(form.value.date);
     const date: Date = new Date();
     console.log(date);
-    const customer: Customer = new Customer(form.value.name, form.value.contactNumber, form.value.reference, form.value.collectionType, form.value.loanAmount, date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear(), form.value.idProof, form.value.loanAmount);
+    const customer: Customer = new Customer(form.value.name, form.value.contactNumber, form.value.reference, form.value.collectionType, form.value.loanAmount, form.value.date, form.value.idProof, form.value.loanAmount);
 
     this.authService.getActiveUser().getToken()
       .then((token: string) => {
