@@ -7,4 +7,13 @@ page-customer-details {
     top: 50%;
     transform: translateY(-50%);
   }
+  .headerBoldText {
+    font-weight: bold;
+  }
+  .dueAmountText {
+    color: red;
+  }
+  .loanAmtText{
+    color : #6ed3cf;
+  }
 }

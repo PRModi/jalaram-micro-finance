@@ -1,10 +1,12 @@
+import { CustomerService } from './../services/customer.service';
+import { AuthService } from './../services/auth.service';
 import { HomePage } from './../pages/home/home';
 import { LoginPage } from './../pages/login/login';
 import { CustomerDetailsPage } from './../pages/customer-details/customer-details';
 import { DailyCollectionPage } from './../pages/daily-collection/daily-collection';
 import { NewCustomerPage } from './../pages/new-customer/new-customer';
 import { Component } from '@angular/core';
-import { Platform, MenuController, AlertController, NavController } from 'ionic-angular';
+import { Platform, MenuController, AlertController, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
@@ -25,7 +27,10 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     public menuCtrl: MenuController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public authService: AuthService,
+    public custService: CustomerService,
+    public loadingCtrl: LoadingController
   ) {
 
     firebase.initializeApp({
@@ -43,6 +48,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+     
 
     });
   }

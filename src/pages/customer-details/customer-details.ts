@@ -16,6 +16,7 @@ export class CustomerDetailsPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public customerService: CustomerService) {
+    
   }
 
   initializeItems() {

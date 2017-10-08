@@ -5,7 +5,7 @@ export class Customer {
         public reference: string,
         public collectionType: string,
         public loanAmount: string,
-        public date: string,
+        public date: Date,
         public idProof: string,
         public amountDue : string
     ) { }

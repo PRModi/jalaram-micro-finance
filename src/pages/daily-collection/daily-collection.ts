@@ -1,7 +1,8 @@
+import { AuthService } from './../../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { CustomerService } from './../../services/customer.service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { Customer } from '../../models/customer.model';
 
 @IonicPage()
@@ -16,7 +17,11 @@ export class DailyCollectionPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    private customerService: CustomerService) {
+    private customerService: CustomerService,
+    public authService: AuthService,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastController) {
   }
 
 
@@ -52,8 +57,78 @@ export class DailyCollectionPage {
   }
 
   onSubmit(form: NgForm) {
-    const date = new Date(form.value.date);
-    console.log(date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear());
+
+    const alert = this.alertCtrl.create({
+      title: 'Sure to update?',
+      subTitle: 'Are you sure you want to update the collection details of customer?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'OK',
+          handler: () => {
+            const loader = this.loadingCtrl.create({
+              content: 'Please wait...'
+            });
+            loader.present();
+
+            const date = new Date(form.value.date);
+            console.log(date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear());
+            console.log(form);
+
+            this.customers = this.customerService.getAllCstomers();
+
+
+            for (var i = 0; i < this.customers.length; i++) {
+              if (this.customers[i].name == form.value.customerName) {
+                console.log(this.customers[i]);
+                let cust = this.customers[i];
+                console.log("cust value");
+                this.customers = [];
+                this.updateDetails(i, cust, form, loader);
+              }
+            }
+
+          }
+        }
+      ]
+    });
+    alert.present();
+
+
+
+  }
+
+  updateDetails(index: number, cust: Customer, form: NgForm, loader: any) {
+
+    if (cust != null) {
+      console.log("inside if cond");
+      let val: any = parseInt(cust.amountDue) - parseInt(form.value.amountGiven);
+      cust.amountDue = val;
+      console.log("updated value");
+      console.log(cust);
+
+      this.authService.getActiveUser().getIdToken()
+        .then((token: string) => {
+          this.customerService.updateCustomer(index, cust, token)
+            .subscribe(() => {
+              console.log("customer updated");
+              loader.dismiss();
+              this.toastCtrl.create({
+                message: 'Details updated successfully!',
+                duration: 2000
+              }).present();
+            },
+            error => { console.log("updation error") })
+
+        })
+        .catch();
+
+      console.log(cust);
+    }
+
   }
 
 }

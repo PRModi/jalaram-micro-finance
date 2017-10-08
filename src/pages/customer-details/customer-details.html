@@ -29,7 +29,7 @@
   <ion-grid *ngIf="selectedCustomer">
     <ion-row>
       <ion-col>
-        <p>Customer Name :</p>
+        <p class="headerBoldText">Customer Name :</p>
       </ion-col>
       <ion-col>
         <p>{{ selectedCustomer.name }}</p>
@@ -38,7 +38,7 @@
 
     <ion-row>
       <ion-col>
-        <p>Contact Number :</p>
+        <p class="headerBoldText">Contact Number :</p>
       </ion-col>
       <ion-col>
         <p>{{ selectedCustomer.contactNumber }}</p>
@@ -47,7 +47,7 @@
 
     <ion-row>
       <ion-col>
-        <p>Reference :</p>
+        <p class="headerBoldText">Reference :</p>
       </ion-col>
       <ion-col>
         <p>{{ selectedCustomer.reference }}</p>
@@ -56,7 +56,7 @@
 
     <ion-row>
       <ion-col>
-        <p>Collection Type :</p>
+        <p class="headerBoldText">Collection Type :</p>
       </ion-col>
       <ion-col>
         <p>{{ selectedCustomer.collectionType }}</p>
@@ -65,16 +65,16 @@
 
     <ion-row>
       <ion-col>
-        <p>Loan Amount :</p>
+        <p class="headerBoldText">Loan Amount :</p>
       </ion-col>
       <ion-col>
-        <p>{{selectedCustomer.loanAmount}}</p>
+        <p class="loanAmtText">{{selectedCustomer.loanAmount}} &#8377;</p>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
-        <p>Start Date :</p>
+        <p class="headerBoldText">Start Date :</p>
       </ion-col>
       <ion-col>
         <p>{{selectedCustomer.date}}</p>
@@ -83,16 +83,16 @@
 
     <ion-row>
       <ion-col>
-        <p>Due Amount :</p>
+        <p class="headerBoldText">Due Amount :</p>
       </ion-col>
       <ion-col>
-        <p>{{selectedCustomer.loanAmount}}</p>
+        <p class="dueAmountText">{{selectedCustomer.amountDue}} &#8377;</p>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>
-        <p>Id proof :</p>
+        <p class="headerBoldText">Id proof :</p>
       </ion-col>
       <ion-col>
         <p>{{selectedCustomer.idProof}}</p>

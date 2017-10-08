@@ -1,6 +1,8 @@
+import { AuthService } from './../../services/auth.service';
+import { CustomerService } from './../../services/customer.service';
 import { LoginPage } from './../login/login';
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { GooglePlus } from "@ionic-native/google-plus";
 
 @Component({
@@ -9,9 +11,35 @@ import { GooglePlus } from "@ionic-native/google-plus";
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     public gPlus: GooglePlus,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public custService: CustomerService,
+    public loadingCtrl: LoadingController,
+    public authService: AuthService) {
+
+    const loader = this.loadingCtrl.create(
+      {
+        content: 'Please wait...'
+      }
+    );
+    loader.present();
+
+    this.authService.getActiveUser().getIdToken()
+      .then((token: string) => {
+        this.custService.fetchCustListFromServer(token)
+          .subscribe(
+          () => {
+            console.log('success');
+            loader.dismiss();
+          }
+          ,
+          (error) => console.log('error'))
+      })
+      .catch()
+
+
 
   }
 

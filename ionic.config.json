@@ -1,6 +1,6 @@
 {
   "name": "jalaram-micro-finance",
-  "app_id": "",
+  "app_id": "5fccac05",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
